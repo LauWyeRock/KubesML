@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prophet-model-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prophet-model
+  template:
+    metadata:
+      labels:
+        app: prophet-model
+    spec:
+      containers:
+      - name: prophet-model
+        image: prophet_model:latest
+        ports:
+        - containerPort: 80
